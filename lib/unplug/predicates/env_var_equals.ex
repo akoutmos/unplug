@@ -5,7 +5,7 @@ defmodule Unplug.Predicates.EnvVarEquals do
   @behaviour Unplug.Predicate
 
   @impl true
-  def call(conn, {env_var, expected_value}) do
+  def call(_conn, {env_var, expected_value}) do
     System.get_env(env_var) == expected_value
   end
 end
