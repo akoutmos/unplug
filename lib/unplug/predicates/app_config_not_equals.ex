@@ -5,7 +5,7 @@ defmodule Unplug.Predicates.AppConfigNotEquals do
   @behaviour Unplug.Predicate
 
   @impl true
-  def call(conn, opts) do
+  def call(_conn, opts) do
     not Unplug.Predicates.AppConfigEquals.call(conn, opts)
   end
 end

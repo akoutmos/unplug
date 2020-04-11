@@ -4,7 +4,7 @@ defmodule Unplug do
   plug Unplug,
     if: {Unplug.Predicates.RequestPathIn, ["/metrics", "healthcheck"]}
     do: {Plug.Telemetry, event_prefix: [:phoenix, :endpoint]}
-    else: Plug.Skip
+    else: SomeOther.Plug
   ```
 
   predicates:
@@ -91,9 +91,9 @@ defmodule Unplug do
     end
   end
 
+  defp eval_plug_init(:compile, :skip), do: :skip
   defp eval_plug_init(:compile, {plug, opts}), do: plug.init(opts)
   defp eval_plug_init(:compile, plug), do: plug.init([])
-  defp eval_plug_init(:compile, :skip), do: :skip
   defp eval_plug_init(:runtime, :skip), do: :skip
   defp eval_plug_init(:runtime, _plug), do: nil
   defp eval_plug_init(bad_arg, _plug), do: raise("Invalid value #{inspect(bad_arg)} for Unplug config :init_mode")
