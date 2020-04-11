@@ -1,0 +1,13 @@
+language: elixir
+elixir:
+  - 1.8.1
+otp_release:
+  - 21.1
+matrix:
+  include:
+  - otp_release: 21.2
+    elixir: 1.8.2
+  - otp_release: 22.1
+    elixir: 1.9.4
+  - otp_release: 22.1
+    elixir: 1.10.2

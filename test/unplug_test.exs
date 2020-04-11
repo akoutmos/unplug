@@ -1,7 +1,6 @@
 defmodule UnplugTest do
   use ExUnit.Case, async: true
   use Plug.Test
-  doctest Unplug
 
   test "accepts anonymous functions for if/do/else" do
     opts =
