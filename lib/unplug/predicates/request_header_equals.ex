@@ -6,6 +6,6 @@ defmodule Unplug.Predicates.RequestHeaderEquals do
 
   @impl true
   def call(conn, {header, expected_value}) do
-    Plug.Conn.get_req_header(conn, header) == expected_value
+    expected_value in Plug.Conn.get_req_header(conn, header)
   end
 end
