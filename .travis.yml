@@ -16,4 +16,4 @@ script:
   - mix xref deprecated --abort-if-any
   - mix xref unreachable --abort-if-any
   - mix format --check-formatted
-  - mix test --cover
+  - mix coveralls.travis
