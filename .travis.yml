@@ -11,3 +11,9 @@ matrix:
     elixir: 1.9.4
   - otp_release: 22.1
     elixir: 1.10.2
+script:
+  - mix compile --warnings-as-errors
+  - mix xref deprecated --abort-if-any
+  - mix xref unreachable --abort-if-any
+  - mix format --check-formatted
+  - mix test --cover

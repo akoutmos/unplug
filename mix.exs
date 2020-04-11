@@ -5,7 +5,7 @@ defmodule Unplug.MixProject do
     [
       app: :unplug,
       version: "0.1.0",
-      elixir: "~> 1.9",
+      elixir: "~> 1.8",
       name: "Unplug",
       source_url: "https://github.com/akoutmos/unplug",
       homepage_url: "https://hex.pm/packages/unplug",
