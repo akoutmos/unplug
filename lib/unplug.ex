@@ -101,5 +101,6 @@ defmodule Unplug do
   defp exec_if_condition_call(conn, {filter_module, filter_opts}), do: filter_module.call(conn, filter_opts)
   defp exec_if_condition_call(conn, filter_module), do: filter_module.call(conn, [])
 
+  defp exec_plug_call(conn, {plug_module, _init_opts}, plug_opts), do: plug_module.call(conn, plug_opts)
   defp exec_plug_call(conn, plug_module, plug_opts), do: plug_module.call(conn, plug_opts)
 end
