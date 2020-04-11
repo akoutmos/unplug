@@ -93,14 +93,17 @@ defmodule Unplug do
 
   defp eval_plug_init(:compile, :skip), do: :skip
   defp eval_plug_init(:compile, {plug, opts}), do: plug.init(opts)
+  defp eval_plug_init(:compile, plug) when is_function(plug, 1), do: nil
   defp eval_plug_init(:compile, plug), do: plug.init([])
   defp eval_plug_init(:runtime, :skip), do: :skip
   defp eval_plug_init(:runtime, _plug), do: nil
   defp eval_plug_init(bad_arg, _plug), do: raise("Invalid value #{inspect(bad_arg)} for Unplug config :init_mode")
 
   defp exec_if_condition_call(conn, {filter_module, filter_opts}), do: filter_module.call(conn, filter_opts)
+  defp exec_if_condition_call(conn, predicate) when is_function(predicate, 1), do: predicate.(conn)
   defp exec_if_condition_call(conn, filter_module), do: filter_module.call(conn, [])
 
   defp exec_plug_call(conn, {plug_module, _init_opts}, plug_opts), do: plug_module.call(conn, plug_opts)
+  defp exec_plug_call(conn, function, _plug_opts) when is_function(function, 1), do: function.(conn)
   defp exec_plug_call(conn, plug_module, plug_opts), do: plug_module.call(conn, plug_opts)
 end
