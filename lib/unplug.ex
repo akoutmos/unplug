@@ -1,5 +1,35 @@
 defmodule Unplug do
   @moduledoc """
+  The purpose of `Unplug` is to provide a wrapper around any arbitrary plug,
+  with the ability to conditionally execute that plug at run-time. The runtime
+  conditions that are leveraged by `Unplug` must conform to the `Unplug.Predicate`
+  behaviour. Out of the box `Unplug` comes with predicates that can be used to
+  execute plugs based on:
+
+  - Environment variable values
+  - Application config values
+  - Request header values
+  - Request path values
+
+  `Unplug` also preserves the behavior of `Plug` in that in its `init/1` function
+  it will evaluate the `init/1` functions of your conditional plugs and store their
+  values so that the `call/2` function does not have to reevaluate the `init/1`
+  functions of your conditional plugs every time the plug pipeline is invoked (see
+  the `Plug` docs for more information https://hexdocs.pm/plug/Plug.Builder.html#module-options).
+
+  # Installation
+
+  # Usage
+
+  # Provided Predicates
+
+  # Writing Your Own Predicates
+
+  `Unplug`
+  also conforms with the behavior found in both `Plug` and `Phoenix` by allowing
+  you to evaluate the `init/1`
+
+
   ```elixir
   plug Unplug,
     if: {Unplug.Predicates.RequestPathIn, ["/metrics", "healthcheck"]}
@@ -99,11 +129,11 @@ defmodule Unplug do
   defp eval_plug_init(:runtime, _plug), do: nil
   defp eval_plug_init(bad_arg, _plug), do: raise("Invalid value #{inspect(bad_arg)} for Unplug config :init_mode")
 
-  defp exec_if_condition_call(conn, {filter_module, filter_opts}), do: filter_module.call(conn, filter_opts)
   defp exec_if_condition_call(conn, predicate) when is_function(predicate, 1), do: predicate.(conn)
-  defp exec_if_condition_call(conn, filter_module), do: filter_module.call(conn, [])
+  defp exec_if_condition_call(conn, {predicate_module, predicate_opts}), do: predicate_module.call(conn, predicate_opts)
+  defp exec_if_condition_call(conn, predicate_module), do: predicate_module.call(conn, [])
 
-  defp exec_plug_call(conn, {plug_module, _init_opts}, plug_opts), do: plug_module.call(conn, plug_opts)
   defp exec_plug_call(conn, function, _plug_opts) when is_function(function, 1), do: function.(conn)
+  defp exec_plug_call(conn, {plug_module, _init_opts}, plug_opts), do: plug_module.call(conn, plug_opts)
   defp exec_plug_call(conn, plug_module, plug_opts), do: plug_module.call(conn, plug_opts)
 end
