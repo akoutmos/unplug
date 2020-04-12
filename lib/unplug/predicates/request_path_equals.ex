@@ -5,7 +5,11 @@ defmodule Unplug.Predicates.RequestPathEquals do
   @behaviour Unplug.Predicate
 
   @impl true
-  def call(conn, opts) do
-    String.equivalent?(opts, conn.request_path)
+  def call(conn, %Regex{} = req_path) do
+    Regex.match?(req_path, conn.request_path)
+  end
+
+  def call(conn, req_path) do
+    String.equivalent?(req_path, conn.request_path)
   end
 end
