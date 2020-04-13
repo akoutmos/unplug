@@ -6,6 +6,7 @@ defmodule Unplug.MixProject do
       app: :unplug,
       version: "0.1.0",
       elixir: "~> 1.8",
+      elixirc_paths: elixirc_paths(Mix.env()),
       name: "Unplug",
       source_url: "https://github.com/akoutmos/unplug",
       homepage_url: "https://hex.pm/packages/unplug",
@@ -34,6 +35,10 @@ defmodule Unplug.MixProject do
       extra_applications: [:logger]
     ]
   end
+
+  # Specifies which paths to compile per environment.
+  defp elixirc_paths(:test), do: ["lib", "test/test_plugs", "test/test_predicates"]
+  defp elixirc_paths(_), do: ["lib"]
 
   defp package() do
     [

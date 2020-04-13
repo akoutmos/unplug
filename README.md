@@ -2,6 +2,9 @@
 
 [![Hex.pm](https://img.shields.io/hexpm/v/unplug.svg)](http://hex.pm/packages/unplug) [![Build Status](https://travis-ci.org/akoutmos/unplug.svg?branch=master)](https://travis-ci.org/akoutmos/unplug) [![Coverage Status](https://coveralls.io/repos/github/akoutmos/unplug/badge.svg?branch=master)](https://coveralls.io/github/akoutmos/unplug?branch=master)
 
+Unplug is an Elixir library that you can use to conditionally execute your plug modules at
+run-time in your Phoenix/Plug applications.
+
 ## Installation
 
 The package can be installed by adding `:unplug` to your list of dependencies in `mix.exs`:

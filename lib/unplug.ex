@@ -17,41 +17,14 @@ defmodule Unplug do
   functions of your conditional plugs every time the plug pipeline is invoked (see
   the `Plug` docs for more information https://hexdocs.pm/plug/Plug.Builder.html#module-options).
 
-  # Installation
-
-  # Usage
-
-  # Provided Predicates
-
-  # Writing Your Own Predicates
-
-  `Unplug`
-  also conforms with the behavior found in both `Plug` and `Phoenix` by allowing
-  you to evaluate the `init/1`
-
+  To use `Unplug`, add an entry in your `endpoint.ex` or `router.ex` files like
+  so:
 
   ```elixir
   plug Unplug,
     if: {Unplug.Predicates.RequestPathIn, ["/metrics", "healthcheck"]}
     do: {Plug.Telemetry, event_prefix: [:phoenix, :endpoint]}
-    else: SomeOther.Plug
   ```
-
-  predicates:
-  RequestPathEquals "/metrics"
-  RequestPathNotEquals "/metrics"
-
-  RequestPathIn ["/metrics", "/healthcheck"]
-  RequestPathNotIn ["/metrics", "/healthcheck"]
-
-  RequestHeaderEquals {header, "expected_value"}
-  RequestHeaderNotEquals {header, "expected_value"}
-
-  EnvVarEquals {"PLUG_ENABLED", "true"}
-  EnvVarNotEquals {"PLUG_ENABLED", "true"}
-
-  AppConfigEquals {:app, :key, "expected_value"}
-  AppConfigNotEquals {:app, :key, "expected_value"}
   """
 
   @behaviour Plug
