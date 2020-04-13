@@ -1,5 +1,14 @@
 defmodule Unplug.Predicates.EnvVarEquals do
   @moduledoc """
+  Given an environment variable, execute the plug if the configured value
+  matches the expected value.
+
+  Usage:
+  ```elixir
+  plug Unplug,
+    if: {Unplug.Predicates.EnvVarEquals, {"ENABLE_DEBUG", "true"}},
+    do: MyApp.Plug
+  ```
   """
 
   @behaviour Unplug.Predicate

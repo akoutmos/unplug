@@ -1,5 +1,14 @@
 defmodule Unplug.Predicates.RequestPathEquals do
   @moduledoc """
+  Given a request path, execute the plug if the request value matches the
+  expected value.
+
+  Usage:
+  ```elixir
+  plug Unplug,
+    if: {Unplug.Predicates.RequestPathEquals, "/metrics"},
+    do: MyApp.Plug
+  ```
   """
 
   @behaviour Unplug.Predicate

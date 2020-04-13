@@ -99,26 +99,18 @@ If the above example, we only want to expose our Prometheus metrics if the reque
 
 Unplug provides the following predicates out of the box:
 
-- `Unplug.Predicates.AppConfigEquals`: Given an application and a key, execute the plug if the configured value matches
-  the expected value.
-- `Unplug.Predicates.AppConfigNotEquals`: Given an application and a key, do not execute the plug if the configured
-  value matches the expected value.
-- `Unplug.Predicates.EnvVarEquals`: Given an environment variable, execute the plug if the configured value matches
-  the expected value.
-- `Unplug.Predicates.EnvVarNotEquals`: Given an environment variable, do not execute the plug if the configured
-  value matches the expected value.
-- `Unplug.Predicates.RequestHeaderEquals`: Given a request header, execute the plug if the request value matches
-  the expected value.
-- `Unplug.Predicates.RequestHeaderNotEquals`: Given a request header, do not execute the plug if the request value
-  matches the expected value.
-- `Unplug.Predicates.RequestPathEquals`: Given a request path, execute the plug if the request value matches
-  the expected value.
-- `Unplug.Predicates.RequestPathNotEquals`: Given a request path, do not execute the plug if the request value
-  matches the expected value.
-- `Unplug.Predicates.RequestPathIn`: Given a request path, execute the plug if the request value is in the
-  the provided list of values.
-- `Unplug.Predicates.RequestPathNotIn`: Given a request path, do not execute the plug if the request value is in
-  the the provided list of values.
+| Predicate                                  | Description                                                                                                |
+| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
+| `Unplug.Predicates.AppConfigEquals`        | Given an application and a key, execute the plug if the configured value matches the expected value        |
+| `Unplug.Predicates.AppConfigNotEquals`     | Given an application and a key, do not execute the plug if the configured value matches the expected value |
+| `Unplug.Predicates.EnvVarEquals`           | Given an environment variable, execute the plug if the configured value matches the expected value         |
+| `Unplug.Predicates.EnvVarNotEquals`        | Given an environment variable, do not execute the plug if the configured value matches the expected value  |
+| `Unplug.Predicates.RequestHeaderEquals`    | Given a request header, execute the plug if the request value matches the expected value                   |
+| `Unplug.Predicates.RequestHeaderNotEquals` | Given a request header, do not execute the plug if the request value matches the expected value            |
+| `Unplug.Predicates.RequestPathEquals`      | Given a request path, execute the plug if the request value matches the expected value                     |
+| `Unplug.Predicates.RequestPathNotEquals`   | Given a request path, do not execute the plug if the request value matches the expected value              |
+| `Unplug.Predicates.RequestPathIn`          | Given a request path, execute the plug if the request value is in the the provided list of values          |
+| `Unplug.Predicates.RequestPathNotIn`       | Given a request path, do not execute the plug if the request value is in the the provided list of values   |
 
 ## Writing Your Own Predicates
 

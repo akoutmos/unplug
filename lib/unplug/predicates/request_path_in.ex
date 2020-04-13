@@ -1,5 +1,14 @@
 defmodule Unplug.Predicates.RequestPathIn do
   @moduledoc """
+  Given a request path, execute the plug if the request value is in
+  the the provided list of values.
+
+  Usage:
+  ```elixir
+  plug Unplug,
+    if: {Unplug.Predicates.RequestPathIn, ["/users", "/auth"]},
+    do: MyApp.Plug
+  ```
   """
 
   @behaviour Unplug.Predicate
