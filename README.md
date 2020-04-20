@@ -88,7 +88,7 @@ Another example to show off the anonymous function and `:else` functionality cou
 ```elixir
 plug Unplug,
   if: fn conn -> conn.remote_ip == {10, 0, 0, 1} end,
-  do: plug MyCoolApp.MetricsExporter,
+  do: MyCoolApp.MetricsExporter,
   else: fn conn ->
     Logger.warn("Someone is trying to steal my metrics!")
     conn

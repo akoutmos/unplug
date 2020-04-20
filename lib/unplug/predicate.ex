@@ -5,7 +5,7 @@ defmodule Unplug.Predicate do
   """
 
   @doc """
-  The `eval/1` function
+  The `call/1` function
   """
   @callback call(conn :: Plug.Conn.t(), opts :: any()) :: boolean()
 end
