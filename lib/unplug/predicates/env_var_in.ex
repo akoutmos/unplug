@@ -14,7 +14,7 @@ defmodule Unplug.Predicates.EnvVarIn do
   @behaviour Unplug.Predicate
 
   @impl true
-  def call(_conn, {env_var, expected_values}) when is_list(expected_values) do
+  def call(_conn, {env_var, expected_values}) do
     System.get_env(env_var) in expected_values
   end
 end

@@ -14,7 +14,7 @@ defmodule Unplug.Predicates.AppConfigIn do
   @behaviour Unplug.Predicate
 
   @impl true
-  def call(_conn, {app, key, expected_values}) when is_list(expected_values) do
+  def call(_conn, {app, key, expected_values}) do
     Application.get_env(app, key) in expected_values
   end
 end
