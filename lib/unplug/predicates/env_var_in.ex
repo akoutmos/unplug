@@ -1,7 +1,7 @@
 defmodule Unplug.Predicates.EnvVarIn do
   @moduledoc """
-  Given an environment variable, execute the plug if the configured value
-  matches the expected value.
+  Given an environment variable, execute the plug if the environment
+  variable value is in the provided list of values.
 
   Usage:
   ```elixir

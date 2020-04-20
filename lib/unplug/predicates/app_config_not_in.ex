@@ -1,7 +1,7 @@
 defmodule Unplug.Predicates.AppConfigNotIn do
   @moduledoc """
   Given an application and a key, execute the plug if the configured value
-  matches the expected value.
+  is not in the provided list of values.
 
   Usage:
   ```elixir
@@ -14,7 +14,7 @@ defmodule Unplug.Predicates.AppConfigNotIn do
   @behaviour Unplug.Predicate
 
   @impl true
-  def call(_conn, {app, key, expected_values}) when is_list(expected_values) do
-    Application.get_env(app, key) not in expected_values
+  def call(conn, opts) do
+    not Unplug.Predicates.AppConfigIn.call(conn, opts)
   end
 end
