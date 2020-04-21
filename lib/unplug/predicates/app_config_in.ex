@@ -1,7 +1,7 @@
 defmodule Unplug.Predicates.AppConfigIn do
   @moduledoc """
   Given an application and a key, execute the plug if the configured value
-  is in the provided list of values.
+  is in the provided enumerable of values.
 
   Usage:
   ```elixir

@@ -1,7 +1,7 @@
 defmodule Unplug.Predicates.RequestPathIn do
   @moduledoc """
   Given a request path, execute the plug if the request value is in
-  the the provided list of values.
+  the the provided enumerable of values.
 
   Usage:
   ```elixir
