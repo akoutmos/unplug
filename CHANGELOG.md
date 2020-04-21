@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2020-04-20
+
+### Added
+
+- The following predicates have been added: EnvVarIn, EnvVarNotIn, AppConfigIn, AppConfigNotIn
+
+### Changed
+
+- Documentation for "in" style predicates
+
 ## [0.1.1] - 2019-12-21
 
 ### Added
