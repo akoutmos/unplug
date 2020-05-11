@@ -68,7 +68,6 @@ The `:if` entry can be:
   the predicate (a predicate is a module that implements the `Unplug.Predicate` behavior).
 - A module that implements the `Unplug.Predicate` behavior. Without any predicate options being specified, an
   empty list is sent as the second argument to the predicate's `call/2` function.
-- An anonymous function of arity one. That one argument being the `conn` for the current request.
 
 The `:do` entry can be:
 
@@ -76,23 +75,18 @@ The `:do` entry can be:
   predicate, and the second element being options that you want to send to that plug.
 - A plug module that you want to execute upon a truthy value from the predicate. Without any options specified,
   Unplug will assume that an empty list should be sent to the plug's `init/1` function.
-- An anonymous function that takes one argument, with that argument being the current request's `conn`. This
-  function must also return a `Plug.Conn` struct.
 
 There is also an `:else` entry that can be provided to `Unplug`. The `:else` entry is identical to the `:do` entry
 in terms of what it accepts as valid input. The `:else` entry is what is execute if the `:if` entry yields a falsey
 value for the current request.
 
-Another example to show off the anonymous function and `:else` functionality could be something like this:
+An example to show off the `:else` functionality could be something like this:
 
 ```elixir
 plug Unplug,
-  if: fn conn -> conn.remote_ip == {10, 0, 0, 1} end,
+  if: MyCoolApp.WhiteListedIPAddress,
   do: MyCoolApp.MetricsExporter,
-  else: fn conn ->
-    Logger.warn("Someone is trying to steal my metrics!")
-    conn
-  end,
+  else: MyCoolApp.LogWarning
 ```
 
 If the above example, we only want to expose our Prometheus metrics if the request is coming from a known safe source
