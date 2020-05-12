@@ -12,7 +12,7 @@ The package can be installed by adding `:unplug` to your list of dependencies in
 ```elixir
 def deps do
   [
-    {:unplug, "~> 0.2.0"}
+    {:unplug, "~> 0.2.1"}
   ]
 end
 ```
