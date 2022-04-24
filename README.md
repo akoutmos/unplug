@@ -1,9 +1,40 @@
-# Unplug
+<!--START-->
+<p align="center">
+  <img align="center" width="40%" src="guides/images/logo.svg" alt="Unplug Logo">
+  <img align="center" width="40%" src="guides/images/logo_text.png" alt="Unplug Logo">
+</p>
 
-[![Hex.pm](https://img.shields.io/hexpm/v/unplug.svg)](http://hex.pm/packages/unplug) [![Build Status](https://travis-ci.org/akoutmos/unplug.svg?branch=master)](https://travis-ci.org/akoutmos/unplug) [![Coverage Status](https://coveralls.io/repos/github/akoutmos/unplug/badge.svg?branch=master)](https://coveralls.io/github/akoutmos/unplug?branch=master)
+<p align="center">
+  Unplug allows you to conditionally execute your plug modules at run-time in your Phoenix/Plug applications!
+</p>
 
-Unplug is an Elixir library that you can use to conditionally execute your plug modules at
-run-time in your Phoenix/Plug applications.
+<p align="center">
+  <a href="https://hex.pm/packages/unplug">
+    <img alt="Hex.pm" src="https://img.shields.io/hexpm/v/unplug?style=for-the-badge">
+  </a>
+
+  <a href="https://github.com/akoutmos/unplug/actions">
+    <img alt="GitHub Workflow Status (master)" src="https://img.shields.io/github/workflow/status/akoutmos/unplug/Unplug%20CI/master?label=Build%20Status&style=for-the-badge">
+  </a>
+
+  <a href="https://coveralls.io/github/akoutmos/unplug?branch=master">
+    <img alt="Coveralls master branch" src="https://img.shields.io/coveralls/github/akoutmos/unplug/master?style=for-the-badge">
+  </a>
+
+  <a href="https://github.com/sponsors/akoutmos">
+    <img alt="Support Unplug" src="https://img.shields.io/badge/Support%20Unplug-%E2%9D%A4-lightblue?style=for-the-badge">
+  </a>
+</p>
+
+<br>
+<!--END-->
+
+# Contents
+
+- [Installation](#installation)
+- [Supporting Unplug](#supporting-unplug)
+- [Setting Up Unplug](#setting-up-unplug)
+- [Attribution](#attribution)
 
 ## Installation
 
@@ -12,7 +43,7 @@ The package can be installed by adding `:unplug` to your list of dependencies in
 ```elixir
 def deps do
   [
-    {:unplug, "~> 0.2.1"}
+    {:unplug, "~> 1.0.0"}
   ]
 end
 ```
@@ -33,7 +64,36 @@ experience and is in line with Phoenix and Plug conventions.
 
 With those in place, you are all set and ready to use Unplug
 
-## Usage
+## Supporting Unplug
+
+If you rely on Unplug in your applications, it would much appreciated if you can give back to the
+project in order to help ensure its continued development.
+
+Checkout my [GitHub Sponsorship page](https://github.com/sponsors/akoutmos) if you want to help out!
+
+### Gold Sponsors
+
+<a href="https://github.com/sponsors/akoutmos/sponsorships?sponsor=akoutmos&tier_id=58083">
+  <img align="center" height="175" src="guides/images/your_logo_here.png" alt="Support the project">
+</a>
+
+### Silver Sponsors
+
+<a href="https://github.com/sponsors/akoutmos/sponsorships?sponsor=akoutmos&tier_id=58082">
+  <img align="center" height="150" src="guides/images/your_logo_here.png" alt="Support the project">
+</a>
+
+### Bronze Sponsors
+
+<a href="https://smartlogic.io/" style="margin-right: 10px;" target="_blank">
+  <img align="center" height="50" src="guides/images/smartlogic-logo-teal-400.png" alt="SmartLogic Consultancy">
+</a>
+
+<a href="https://github.com/sponsors/akoutmos/sponsorships?sponsor=akoutmos&tier_id=17615">
+  <img align="center" height="125" src="guides/images/your_logo_here.png" alt="Support the project">
+</a>
+
+## Setting Up Unplug
 
 Unplug can be used anywhere you would typically use the `plug` macro. For example, let's say you want
 to skip the `Plug.Telemetry` plug for certain routes (to cut down on noise in your logs for example).
@@ -92,7 +152,7 @@ plug Unplug,
 If the above example, we only want to expose our Prometheus metrics if the request is coming from a known safe source
 (as a side note there are better ways to secure your metrics...don't use this in production).
 
-## Provided Predicates
+### Provided Predicates
 
 Unplug provides the following predicates out of the box:
 
@@ -110,10 +170,10 @@ Unplug provides the following predicates out of the box:
 | `Unplug.Predicates.RequestHeaderNotEquals` | Given a request header, do not execute the plug if the request value matches the expected value                               |
 | `Unplug.Predicates.RequestPathEquals`      | Given a request path, execute the plug if the request value matches the expected value                                        |
 | `Unplug.Predicates.RequestPathNotEquals`   | Given a request path, do not execute the plug if the request value matches the expected value                                 |
-| `Unplug.Predicates.RequestPathIn`          | Given a request path, execute the plug if the request value is in the the provided enumerable of values                       |
-| `Unplug.Predicates.RequestPathNotIn`       | Given a request path, do not execute the plug if the request value is in the the provided enumerable of values                |
+| `Unplug.Predicates.RequestPathIn`          | Given a request path, execute the plug if the request value is in the provided enumerable of values                           |
+| `Unplug.Predicates.RequestPathNotIn`       | Given a request path, do not execute the plug if the request value is in the provided enumerable of values                    |
 
-## Writing Your Own Predicates
+### Writing Your Own Predicates
 
 To write your own Unplug predicate, all you have to do is implement the `Unplug.Predicate` behavior and provide
 a `call/2` function that will return a boolean value.
@@ -137,3 +197,7 @@ plug Unplug,
   if: {MyApp.UnplugPredicates.MethodEquals, "DELETE"},
   do: MyApp.MyPlugs.DeleteAuditLoggerPlug
 ```
+
+## Attribution
+
+- The logo for the project is an edited version of an SVG image from the [unDraw project](https://undraw.co/)
