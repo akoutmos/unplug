@@ -1,7 +1,7 @@
 <!--START-->
 <p align="center">
-  <img align="center" width="40%" src="guides/images/logo.svg" alt="Unplug Logo">
-  <img align="center" width="40%" src="guides/images/logo_text.png" alt="Unplug Logo">
+  <img align="center" width="30%" src="guides/images/logo.svg" alt="Unplug Logo">
+  <img align="center" width="30%" src="guides/images/logo_text.png" alt="Unplug Logo">
 </p>
 
 <p align="center">
