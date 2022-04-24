@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  Unplug allows you to conditionally execute your plug modules at run-time in your Phoenix/Plug applications!
+  Conditionally execute your plug modules at run-time in your Phoenix/Plug applications!
 </p>
 
 <p align="center">

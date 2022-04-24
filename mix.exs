@@ -15,6 +15,7 @@ defmodule Unplug.MixProject do
       docs: docs(),
       package: package(),
       deps: deps(),
+      aliases: aliases(),
       test_coverage: [tool: ExCoveralls],
       preferred_cli_env: [
         coveralls: :test,
@@ -62,9 +63,15 @@ defmodule Unplug.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      # doProduction deps
       {:plug, "~> 1.8"},
-      {:ex_doc, "~> 0.28.3", only: :dev, runtime: false},
-      {:excoveralls, "~> 0.14.4", only: :test, runtime: false}
+
+      # Development deps
+      {:ex_doc, "~> 0.28.2", only: :dev},
+      {:excoveralls, "~> 0.14.4", only: [:test, :dev], runtime: false},
+      {:doctor, "~> 0.18.0", only: :dev},
+      {:credo, "~> 1.6.1", only: :dev},
+      {:git_hooks, "~> 0.7.3", only: [:test, :dev], runtime: false}
     ]
   end
 
@@ -93,10 +100,10 @@ defmodule Unplug.MixProject do
   defp massage_readme(_) do
     hex_docs_friendly_header_content = """
     <br>
-    <img align="center" width="33%" src="guides/images/logo.svg" alt="Unplug Logo" style="margin-left:33%">
-    <img align="center" width="70%" src="guides/images/logo_text.png" alt="Unplug Logo" style="margin-left:15%">
+    <img align="center" width="25%" src="guides/images/logo.svg" alt="Unplug Logo" style="margin-left:33%">
+    <img align="center" width="55%" src="guides/images/logo_text.png" alt="Unplug Logo" style="margin-left:15%">
     <br>
-    <div align="center">Unplug allows you to conditionally execute your plug modules at run-time in your Phoenix/Plug applications!</div>
+    <div align="center">Conditionally execute your plug modules at run-time in your Phoenix/Plug applications!</div>
     <br>
     --------------------
 
