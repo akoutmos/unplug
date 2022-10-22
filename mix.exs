@@ -63,7 +63,7 @@ defmodule Unplug.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      # doProduction deps
+      # Production deps
       {:plug, "~> 1.8"},
 
       # Development deps
