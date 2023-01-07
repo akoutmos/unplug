@@ -14,7 +14,7 @@
   </a>
 
   <a href="https://github.com/akoutmos/unplug/actions">
-    <img alt="GitHub Workflow Status (master)" src="https://img.shields.io/github/workflow/status/akoutmos/unplug/Unplug%20CI/master?label=Build%20Status&style=for-the-badge">
+    <img alt="GitHub Workflow Status (master)" src="https://img.shields.io/github/actions/workflow/status/akoutmos/unplug/main.yml?label=Build%20Status&style=for-the-badge&branch=master">
   </a>
 
   <a href="https://coveralls.io/github/akoutmos/unplug?branch=master">
