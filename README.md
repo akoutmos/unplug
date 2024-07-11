@@ -43,7 +43,7 @@ The package can be installed by adding `:unplug` to your list of dependencies in
 ```elixir
 def deps do
   [
-    {:unplug, "~> 1.0.0"}
+    {:unplug, "~> 1.1.0"}
   ]
 end
 ```
@@ -211,10 +211,10 @@ plug Unplug,
 
 Unplug provides the following composition predicates out of the box:
 
-| Predicate                | Description                                                                        |
-| ------------------------ | -----------------------------------------------------------------------------------|
-| `Unplug.Compose.All`     | Given a list of predicates, execute the plug if all of the predicates return true. |
-| `Unplug.Compose.Any`     | Given a list of predicates, execute the plug if any of the predicates return true. |
+| Predicate            | Description                                                                        |
+| -------------------- | ---------------------------------------------------------------------------------- |
+| `Unplug.Compose.All` | Given a list of predicates, execute the plug if all of the predicates return true. |
+| `Unplug.Compose.Any` | Given a list of predicates, execute the plug if any of the predicates return true. |
 
 ## Attribution
 
