@@ -194,6 +194,28 @@ plug Unplug,
   do: MyApp.MyPlugs.DeleteAuditLoggerPlug
 ```
 
+### Composition of predicates
+
+Unplug supports composing multiple predicates together to create more complex conditions. For example, if you wanted
+to execute a plug only when a config key is set to a certain value and for a specific request path, you could do
+the following:
+
+```elixir
+plug Unplug,
+  if: {Unplug.Compose.All, [
+    {Unplug.Predicates.AppConfigEquals, {:app, :config_key, :expected_value}},
+    {Unplug.Predicates.RequestPathEquals, "/api/v1/users/1"}
+  ]},
+  do: MyApp.MyPlugs.DeleteAuditLoggerPlug
+```
+
+Unplug provides the following composition predicates out of the box:
+
+| Predicate                | Description                                                                        |
+| ------------------------ | -----------------------------------------------------------------------------------|
+| `Unplug.Compose.All`     | Given a list of predicates, execute the plug if all of the predicates return true. |
+| `Unplug.Compose.Any`     | Given a list of predicates, execute the plug if any of the predicates return true. |
+
 ## Attribution
 
 - The logo for the project is an edited version of an SVG image from the [unDraw project](https://undraw.co/)
