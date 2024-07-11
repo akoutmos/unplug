@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2024-07-11
+
+### Added
+
+- The ability to compose predicate modules https://github.com/akoutmos/unplug/pull/6
+
+### Updated
+
+- Vesion bump for `:ssl_verify_fun` https://github.com/akoutmos/unplug/pull/6
+
 ## [1.0.0] - 2022-04-23
 
 ### Added
