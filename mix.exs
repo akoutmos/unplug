@@ -68,10 +68,10 @@ defmodule Unplug.MixProject do
 
       # Development deps
       {:ex_doc, "~> 0.34.2", only: :dev},
-      {:excoveralls, "~> 0.18.1", only: [:test, :dev], runtime: false},
       {:doctor, "~> 0.21.0", only: :dev},
       {:credo, "~> 1.7.7", only: :dev},
-      {:git_hooks, "~> 0.7.3", only: [:test, :dev], runtime: false}
+      {:excoveralls, "~> 0.18.1", only: [:test, :dev], runtime: false},
+      {:castore, "~> 1.0", only: :test}
     ]
   end
 
